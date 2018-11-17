@@ -18,6 +18,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
 </head>
 <body>
     <div id="app">
@@ -71,10 +72,18 @@
                 </div>
             </div>
         </nav>
-
-        <main class="py-4">
-            @yield('content')
-        </main>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-12 col-md-12 col-lg-12">
+                    <div class="card">
+                        <div class="card-header text-center">Dodaj czas pracy</div>
+                        <div class="card-body">
+                            @yield('workingTimeContent')
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </body>
 </html>

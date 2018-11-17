@@ -1,0 +1,12 @@
+.container-fluid
+{
+    margin-top:20px;
+}
+
+.card-header
+{
+    font-variant : small-caps;
+    font-weight: 900;
+    font-size: large;
+    font-color : rgb(72, 72, 72);
+}
