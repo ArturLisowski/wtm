@@ -32,7 +32,7 @@
             </div>
             <div class="row form-row">
                 <div class="col-md-4 offset-md-8 form-place">
-                    buba
+                        @yield('content')
                 </div>
             </div>
         </div>
