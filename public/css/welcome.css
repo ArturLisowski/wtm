@@ -1,0 +1,39 @@
+.fullscreen-bg {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    overflow: hidden;
+    z-index: -100;
+}
+
+.fullscreen-bg__video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: auto;
+    height: 100%;
+}
+html,body
+{
+    height: 100%;
+}
+.form-row
+{
+    height: 100%;
+}
+.form-place
+{
+    height: 100%;
+    background-color: #ffffff;
+    
+}
+.landingPage
+{
+    height:100%;
+}
+.container-fluid
+{
+    height: 100%;
+}
