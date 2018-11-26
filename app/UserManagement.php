@@ -41,18 +41,6 @@ class UserManagement extends Model
         $this->name = $name;
     }
 
-    public function getSurname() {
-        return $this->surname;
-    }
-
-    public function setSurname($surname) {
-	    $surname->validate([
-           'surname' => 'required|string|max:35',
-       	]);
-
-        $this->surname = $surname;
-    }
-
     public function getEmail() {
         return $this->email;
     }
