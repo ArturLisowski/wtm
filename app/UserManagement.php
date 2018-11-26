@@ -8,7 +8,6 @@ class UserManagement extends Model
 {
 	private $id;
 	private $name;
-	private $surname;
 	private $email;
 	private $password;
 
@@ -24,7 +23,6 @@ class UserManagement extends Model
 					->get();
 
 		$this->name = $user->name;
-		$this->surname = $user->surname;
 		$this->email = $user->email;
 		$this->password = $user->password;
 	}
