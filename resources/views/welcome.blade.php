@@ -1,8 +1,10 @@
 @extends('layouts.welcome')
 
 @section('content')
-    <div class="col-xs-12 col-md-5 offset-md-6 login-box">
+    <div class="col-xs-12 col-md-5 offset-md-6 login-box text-center">
+        <span class="wtmText"><span class="fl">W</span>orking <span class="fl">T</span>ime <span class="fl">M</span>anagement</span>
         <div class="card-body">
+
             <form method="POST" action="{{ route('login') }}">
                 @csrf
 

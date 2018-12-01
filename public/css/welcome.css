@@ -43,8 +43,25 @@ html, body {
     padding-right: 35px !important;
 }
 
-#remember
-{
-    position:relative;
+#remember {
+    position: relative;
     margin-right: 5px;
+}
+
+.wtmText {
+    color: #333333 !important;
+    font-family: "Arial Black", Gadget, sans-serif;
+    font-size: 24px;
+    letter-spacing: 2.4px;
+    word-spacing: 3px;
+    font-weight: 500;
+    text-decoration: none;
+    font-style: normal;
+    font-variant: small-caps;
+    text-transform: capitalize;
+}
+
+.wtmText .fl {
+    color: #3490dc;
+
 }
