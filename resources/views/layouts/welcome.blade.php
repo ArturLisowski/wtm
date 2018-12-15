@@ -15,7 +15,7 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
-    <link rel="Stylesheet" type="text/css" href="{{asset('css/welcome.css')}}" />
+    <link rel="Stylesheet" type="text/css" href="{{asset('css/welcome.css')}}"/>
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -23,19 +23,13 @@
 
     </style>
 </head>
-    <div id="app" class="landingPage">
-        <div class="container-fluid">
-            <div class="fullscreen-bg">
-                <video playsinline="playsinline" autoplay="autoplay" muted="muted" class="fullscreen-bg__video">
-                    <source src="{{ asset('images/clock.mp4') }}" type="video/mp4">
-                </video>
-            </div>
-            <div class="row form-row">
-                <div class="col-md-4 offset-md-8 form-place">
-                    buba
-                </div>
-            </div>
-        </div>
+<div id="app" class="landingPage">
+    <div class="container-fluid">
+        <video playsinline="playsinline" autoplay="autoplay" muted="muted">
+            <source src="{{ asset('images/clock.mp4') }}" type="video/mp4">
+        </video>
     </div>
+    @yield('content')
+</div>
 </body>
 </html>
