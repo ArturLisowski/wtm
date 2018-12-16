@@ -16,10 +16,6 @@
 !/vendor/laravel/framework/src/Illuminate/Foundation/Auth
 /vendor/laravel/framework/src/Illuminate/Foundation/Auth/*
 !/vendor/laravel/framework/src/Illuminate/Foundation/Auth/AuthenticatesUsers.php
-
-
-
-
 /.idea
 /.vscode
 /nbproject
