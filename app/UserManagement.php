@@ -11,13 +11,14 @@ class UserManagement extends Model
     private $name;
     private $email;
     private $password;
+    private $active;
     
-    public function __construct($id)
+    /**
+     * UserManagement constructor.
+     * @param int $id
+     */
+    public function __construct(int $id)
     {
-        $id->validate([
-            'id' => 'integer',
-        ]);
-        
         $this->id = $id;
         
         $user = DB::table('users')
@@ -27,47 +28,61 @@ class UserManagement extends Model
         $this->name = $user->name;
         $this->email = $user->email;
         $this->password = $user->password;
+        $this->active = $user->active;
     }
     
+    /**
+     * @return mixed
+     */
     public function getName()
     {
         return $this->name;
     }
     
-    public function setName($name)
+    /**
+     * @param string $name
+     */
+    public function setName(string $name)
     {
-        $name->validate([
-            'name' => 'required|string|max:25',
-        ]);
-        
         $this->name = $name;
     }
     
+    /**
+     * @return mixed
+     */
     public function getEmail()
     {
         return $this->email;
     }
     
-    public function setEmail($email)
+    /**
+     * @param string $email
+     */
+    public function setEmail(string $email)
     {
-        $email->validate([
-            'email' => 'required|email|max:50',
-        ]);
-        
         $this->email = $email;
     }
     
+    /**
+     * @return mixed
+     */
     public function getPassword()
     {
         return $this->password;
     }
     
-    public function setPassword($password)
+    /**
+     * @param int $value
+     */
+    public function setActive(int $value)
     {
-        $password->validate([
-            'password' => 'required|max:25',
-        ]);
-        
+        $this->active=$value;
+    }
+    /**
+     * @param string $password
+     */
+    public function setPassword(string $password)
+    {
         $this->password = $password;
     }
 
@@ -81,23 +96,31 @@ class UserManagement extends Model
 //           ->update(['password' => $this->password]);
 //    }
     
-    public static function getAllUsers($paginate = null, $orderBy = 'id', $method = 'ASC')
+    /**
+     * @param int|null $paginate
+     * @param string $orderBy
+     * @param string $method
+     * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator|\Illuminate\Support\Collection
+     */
+    public static function getAllUsers(int $paginate = null, string $orderBy = 'id', string $method = 'ASC')
     {
         if (!empty($paginate)) {
-            return DB::table('users')->select('*')->orderBy($orderBy,$method)->paginate($paginate);
+            return DB::table('users')->select('*')->orderBy($orderBy, $method)->paginate($paginate);
         } else {
-            return DB::table('users')->select('*')->orderBy($orderBy,$method)->get();
+            return DB::table('users')->select('*')->orderBy($orderBy, $method)->get();
         }
-        
     }
     
-    public static function getAllActiveUsers($paginate = null)
+    /**
+     * @param int|null $paginate
+     * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator|\Illuminate\Support\Collection
+     */
+    public static function getAllActiveUsers(int $paginate = null)
     {
         if (!empty($paginate)) {
             return DB::table('users')->select('*')->where('active', '=', 1)->paginate($paginate);
         } else {
             return DB::table('users')->select('*')->where('active', '=', 1)->get();
         }
-        
     }
 }
