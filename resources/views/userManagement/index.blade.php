@@ -75,8 +75,18 @@
                                         @else
                                             <i class="fas fa-lock"></i>
                                         @endif
-                                        </td>
-                                    <td></td>
+                                    </td>
+                                    <td>
+                                        @if($user->active)
+                                            <a href="{{url('/userManagement/setActive/'.$user->id)}}" onclick="return confirm('You Are trying deactivate {{$user->name}}, {{$user->email}}. Are you sure?')">
+                                                <i class="fas fa-lock"></i>
+                                            </a>
+                                        @else
+                                            <a href="{{url('/userManagement/setActive/'.$user->id)}}" onclick="return confirm('You Are trying activate {{$user->name}}, {{$user->email}}. Are you sure?')">
+                                                <i class="fas fa-lock-open"></i>
+                                            </a>
+                                        @endif
+                                    </td>
                                 </tr>
                             @endforeach
                             {{$users->links()}}
