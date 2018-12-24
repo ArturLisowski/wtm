@@ -12,9 +12,10 @@ class UserManagementController extends Controller
         $this->middleware('auth');
     }
     
-    public function index()
+    public function index($orderBy = 'id' , $method = 'ASC')
     {
-        $users = UserManagement::getAllUsers(15);
-        return view('userManagement/index', compact('users'));
+        $users = UserManagement::getAllUsers(15,$orderBy,$method);
+        $formMethod = ($method == 'ASC')? 'DESC' : 'ASC';
+        return view('userManagement/index', compact('users','formMethod','orderBy'));
     }
 }

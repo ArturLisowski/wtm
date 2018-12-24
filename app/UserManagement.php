@@ -81,12 +81,12 @@ class UserManagement extends Model
 //           ->update(['password' => $this->password]);
 //    }
     
-    public static function getAllUsers($paginate = null)
+    public static function getAllUsers($paginate = null, $orderBy = 'id', $method = 'ASC')
     {
         if (!empty($paginate)) {
-            return DB::table('users')->select('*')->paginate($paginate);
+            return DB::table('users')->select('*')->orderBy($orderBy,$method)->paginate($paginate);
         } else {
-            return DB::table('users')->select('*')->get();
+            return DB::table('users')->select('*')->orderBy($orderBy,$method)->get();
         }
         
     }

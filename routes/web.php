@@ -18,5 +18,5 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/userManagement', 'UserManagementController@index')->name('userManagement');
+Route::get('/userManagement/{orderBy?}/{method?}', 'UserManagementController@index')->name('userManagement');
 

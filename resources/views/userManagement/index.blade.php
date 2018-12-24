@@ -11,17 +11,52 @@
                         <table class="table table-active table-hover table-striped table-bordered">
                             <thead>
                             <tr>
+
                                 <td>
                                     #
                                 </td>
                                 <td>
-                                    Name
+                                    <a href="{{url('/userManagement/name/'.$formMethod)}}">
+                                        <div style="height:100%;width:100%">
+                                            Name
+                                            @if($orderBy == 'name')
+                                                @if($formMethod == 'ASC')
+                                                    <i class="fas fa-arrow-down"></i>
+                                                @else
+                                                    <i class="fas fa-arrow-up"></i>
+                                                @endif
+                                            @endif
+                                        </div>
+                                    </a>
+                                </td>
+
+                                <td>
+                                    <a href="{{url('/userManagement/email/'.$formMethod)}}">
+                                        <div style="height:100%;width:100%">
+                                            Email
+                                            @if($orderBy == 'email')
+                                                @if($formMethod == 'ASC')
+                                                    <i class="fas fa-arrow-down"></i>
+                                                @else
+                                                    <i class="fas fa-arrow-up"></i>
+                                                @endif
+                                            @endif
+                                        </div>
+                                    </a>
                                 </td>
                                 <td>
-                                    Email
-                                </td>
-                                <td>
-                                    Active
+                                    <a href="{{url('/userManagement/active/'.$formMethod)}}">
+                                        <div style="height:100%;width:100%">
+                                            Active
+                                            @if($orderBy == 'active')
+                                                @if($formMethod == 'ASC')
+                                                    <i class="fas fa-arrow-down"></i>
+                                                @else
+                                                    <i class="fas fa-arrow-up"></i>
+                                                @endif
+                                            @endif
+                                        </div>
+                                    </a>
                                 </td>
                                 <td>
                                     Actions
