@@ -69,7 +69,13 @@
                                     <td>{{$user->id}}</td>
                                     <td>{{$user->name}}</td>
                                     <td>{{$user->email}}</td>
-                                    <td>{{$user->active}}</td>
+                                    <td>
+                                        @if($user->active)
+                                            <i class="fas fa-lock-open"></i>
+                                        @else
+                                            <i class="fas fa-lock"></i>
+                                        @endif
+                                        </td>
                                     <td></td>
                                 </tr>
                             @endforeach
