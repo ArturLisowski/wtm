@@ -15,6 +15,8 @@ class UserManagementLogic extends UserManagement
 {
     public static function changeActive(int $userId)
     {
-    
+        $_user = new UserManagement($userId);
+        $_user->setActive(!$_user->getActive());
+        $_user->save();
     }
 }

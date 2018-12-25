@@ -5,7 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 
-class UserManagement extends Model
+class UserManagement extends model
 {
     private $id;
     private $name;
@@ -25,10 +25,10 @@ class UserManagement extends Model
             ->where('id', $this->id)
             ->get();
         
-        $this->name = $user->name;
-        $this->email = $user->email;
-        $this->password = $user->password;
-        $this->active = $user->active;
+        $this->name = $user[0]->name;
+        $this->email = $user[0]->email;
+        $this->password = $user[0]->password;
+        $this->active = $user[0]->active;
     }
     
     /**
@@ -72,12 +72,21 @@ class UserManagement extends Model
     }
     
     /**
-     * @param int $value
+     * @param bool $value
      */
-    public function setActive(int $value)
+    public function setActive(bool $value)
     {
-        $this->active=$value;
+        $this->active = $value;
     }
+    
+    /**
+     * @return mixed
+     */
+    public function getActive()
+    {
+        return $this->active;
+    }
+    
     /**
      * @param string $password
      */
@@ -85,16 +94,17 @@ class UserManagement extends Model
     {
         $this->password = $password;
     }
-
-//    public function save()
-//	{
-//        DB::table('users')
-//           ->where('id', $this->id)
-//           ->update(['name' => $this->name])
-//           ->update(['surname' => $this->surname])
-//           ->update(['email' => $this->email])
-//           ->update(['password' => $this->password]);
-//    }
+    
+    /**
+     * @param array $options
+     * @return bool|void
+     */
+    public function save(array $options = [])
+    {
+        DB::table('users')
+            ->where('id', $this->id)
+            ->update(['name' => $this->name, 'email' => $this->email, 'password' => $this->password, 'active' => $this->getActive()]);
+    }
     
     /**
      * @param int|null $paginate

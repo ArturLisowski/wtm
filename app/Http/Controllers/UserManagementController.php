@@ -23,6 +23,7 @@ class UserManagementController extends Controller
     public function setActive(int $id) //todo validateInput
     {
         UserManagementLogic::changeActive($id);
+        return redirect(route('userManagement'));
     }
     
 }
