@@ -1,9 +1,20 @@
 .fa-lock-open
 {
     color: darkgreen;
+    margin-left: 10px;
+    margin-right: 10px;
 }
 
 .fa-lock
 {
     color: gray;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.fa-user-edit
+{
+    color:dodgerblue;
+    margin-left: 10px;
+    margin-right: 10px;
 }
