@@ -27,6 +27,7 @@ class UsersTableSeeder extends Seeder
             'name' => 'sys administrator',
             'email' => 'administrator@gmail.com',
             'password' => bcrypt('123qwe'),
+            'isAdmin' => '1'
         ]);
     }
 
