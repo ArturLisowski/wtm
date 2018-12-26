@@ -12,6 +12,7 @@ class UserManagement extends model
     private $email;
     private $password;
     private $active;
+    private $isAdmin;
     
     /**
      * UserManagement constructor.
@@ -21,14 +22,23 @@ class UserManagement extends model
     {
         $this->id = $id;
         
-        $user = DB::table('users')
-            ->where('id', $this->id)
-            ->get();
-        
-        $this->name = $user[0]->name;
-        $this->email = $user[0]->email;
-        $this->password = $user[0]->password;
-        $this->active = $user[0]->active;
+        if (isset($id) && $id >= 0) {
+            $user = DB::table('users')
+                ->where('id', $this->id)
+                ->get();
+            
+            $this->name = $user[0]->name;
+            $this->email = $user[0]->email;
+            $this->password = $user[0]->password;
+            $this->active = $user[0]->active;
+            $this->isAdmin = $user[0]->isAdmin;
+        } else {
+            $this->name = '';
+            $this->email = '';
+            $this->password = '';
+            $this->active = 0;
+            $this->isAdmin = 0;
+        }
     }
     
     /**
@@ -92,7 +102,23 @@ class UserManagement extends model
      */
     public function setPassword(string $password)
     {
-        $this->password = $password;
+        $this->password = bcrypt($password);
+    }
+    
+    /**
+     * @param bool $value
+     */
+    public function setAdmin(bool $value)
+    {
+        $this->isAdmin = $value;
+    }
+    
+    /**
+     * @return mixed
+     */
+    public function getAdmin()
+    {
+        return $this->isAdmin;
     }
     
     /**
@@ -103,7 +129,13 @@ class UserManagement extends model
     {
         DB::table('users')
             ->where('id', $this->id)
-            ->update(['name' => $this->name, 'email' => $this->email, 'password' => $this->password, 'active' => $this->getActive()]);
+            ->update([
+                'name' => $this->name,
+                'email' => $this->email,
+                'password' => $this->password,
+                'active' => $this->active,
+                'isAdmin' => $this->isAdmin
+            ]);
     }
     
     /**
