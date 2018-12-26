@@ -150,10 +150,11 @@
                 <form name="userEdit" action="" method="POST">
                     <div class="modal-body">
                         <input type="hidden" name="_token" value="{{csrf_token()}}">
+                        <input type="hidden" name="id" value="">
                         <input type="text" name="name" class="form-control" placeholder="Name" autofocus required>
                         <input type="email" name="email" class="form-control" placeholder="Email" required>
-                        <input type="password" name="password" class="form-control" placeholder="password">
-                        <input type="rePassword" name="rePassword" class="form-control" placeholder="retype password">
+                        <input type="password" name="password" class="form-control" placeholder="Password">
+                        <input type="rePassword" name="rePassword" class="form-control" placeholder="Retype password">
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
