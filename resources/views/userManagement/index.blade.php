@@ -108,7 +108,7 @@
                                                 <i class="fas fa-lock-open"></i>
                                             </a>
                                         @endif
-                                        <a href="" title="edit">
+                                        <a href="" title="edit" data-toggle="modal" data-target="#userEditModal">
                                             <i class="fas fa-user-edit"></i>
                                         </a>
                                         @if($user->isAdmin)
@@ -137,4 +137,33 @@
             </div>
         </div>
     </div>
+
+    <div class="modal fade" id="userEditModal" tabindex="-1" role="dialog" aria-labelledby="userEditModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="userEditModalLongTitle">Edit user</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form name="userEdit" action="" method="POST">
+                    <div class="modal-body">
+                        <input type="hidden" name="_token" value="{{csrf_token()}}">
+                        <input type="text" name="name" class="form-control" placeholder="Name" autofocus required>
+                        <input type="email" name="email" class="form-control" placeholder="Email" required>
+                        <input type="password" name="password" class="form-control" placeholder="password">
+                        <input type="rePassword" name="rePassword" class="form-control" placeholder="retype password">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <input type="submit" class="btn btn-primary" value="Submit">
+                    </div>
+                </form>
+
+
+            </div>
+        </div>
+    </div>
+
 @endsection
