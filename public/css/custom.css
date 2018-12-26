@@ -1,20 +1,25 @@
-.fa-lock-open
-{
+.fa-lock-open {
     color: darkgreen;
     margin-left: 10px;
     margin-right: 10px;
 }
 
-.fa-lock
-{
+.fa-lock {
     color: gray;
     margin-left: 10px;
     margin-right: 10px;
 }
 
-.fa-user-edit
-{
-    color:dodgerblue;
+.fa-user-edit {
+    color: dodgerblue;
     margin-left: 10px;
     margin-right: 10px;
+}
+
+.disactive {
+    color: #992227;
+}
+
+.active {
+    color: darkgreen;
 }

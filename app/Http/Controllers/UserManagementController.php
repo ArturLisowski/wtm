@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Logic\UserManagement\UserManagementLogic;
+use App\User;
 use App\UserManagement;
 
 
@@ -26,4 +27,9 @@ class UserManagementController extends Controller
         return redirect(route('userManagement'));
     }
     
+    public function setAdmin(int $id)
+    {
+        UserManagementLogic::changeAdmin($id);
+        return redirect(route('userManagement'));
+    }
 }
