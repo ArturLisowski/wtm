@@ -32,4 +32,23 @@ class UserManagementLogic extends UserManagement
         $_user->setAdmin(!$_user->getAdmin());
         $_user->save();
     }
+    
+    /**
+     * @param int $id
+     * @param string $name
+     * @param string $email
+     * @param string $password
+     */
+    public static function editUser(int $id, string $name, string $email, $password)
+    {
+        $_user = new UserManagement($id);
+        $_user->setName($name);
+        $_user->setEmail($email);
+        
+        if ($password != null) {
+            $_user->setPassword($password);
+        }
+        
+        $_user->save();
+    }
 }

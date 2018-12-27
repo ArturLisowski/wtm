@@ -6,12 +6,19 @@
             <div class="col-md-10">
                 <div class="card">
                     <div class="card-header">Users</div>
-
                     <div class="card-body">
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
                         <table class="table table-active table-hover table-striped table-bordered text-center">
                             <thead>
                             <tr>
-
                                 <td>
                                     #
                                 </td>
@@ -125,14 +132,12 @@
                                                 <i class="fas fa-user-tie active"></i>
                                             </a>
                                         @endif
-
                                     </td>
                                 </tr>
                             @endforeach
                             {{$users->links()}}
                             </tbody>
                         </table>
-
                     </div>
                 </div>
             </div>
@@ -148,33 +153,30 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form name="userEdit" action="" method="POST">
+                <form name="userEdit" action="{{route('editUser')}}" method="POST">
                     <div class="modal-body">
                         <input type="hidden" name="_token" value="{{csrf_token()}}">
                         <input type="hidden" id="userEditModalId" name="id" value="">
                         <input type="text" id="userEditModalName" name="name" class="form-control" placeholder="Name" autofocus required>
                         <input type="email" id="userEditModalEmail" name="email" class="form-control" placeholder="Email" required>
                         <input type="password" name="password" class="form-control" placeholder="Password">
-                        <input type="rePassword" name="rePassword" class="form-control" placeholder="Retype password">
+                        <input type="password" name="rePassword" class="form-control" placeholder="Retype password">
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                         <input type="submit" class="btn btn-primary" value="Submit">
                     </div>
                 </form>
-
-
             </div>
         </div>
     </div>
 
     <script>
         function insertDataForUserEditModal(id, name, email) {
-            document.getElementById("userEditModalName").value=name;
-            document.getElementById("userEditModalEmail").value=email;
-            document.getElementById("userEditModalId").value=id;
+            document.getElementById("userEditModalName").value = name;
+            document.getElementById("userEditModalEmail").value = email;
+            document.getElementById("userEditModalId").value = id;
         }
-
     </script>
 
 @endsection
