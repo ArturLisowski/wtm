@@ -108,7 +108,8 @@
                                                 <i class="fas fa-lock-open"></i>
                                             </a>
                                         @endif
-                                        <a href="" title="edit" data-toggle="modal" data-target="#userEditModal">
+                                        <a href="" title="edit" data-toggle="modal" data-target="#userEditModal"
+                                           onclick="insertDataForUserEditModal('{{$user->id}}', '{{$user->name}}', '{{$user->email}}')">
                                             <i class="fas fa-user-edit"></i>
                                         </a>
                                         @if($user->isAdmin)
@@ -150,9 +151,9 @@
                 <form name="userEdit" action="" method="POST">
                     <div class="modal-body">
                         <input type="hidden" name="_token" value="{{csrf_token()}}">
-                        <input type="hidden" name="id" value="">
-                        <input type="text" name="name" class="form-control" placeholder="Name" autofocus required>
-                        <input type="email" name="email" class="form-control" placeholder="Email" required>
+                        <input type="hidden" id="userEditModalId" name="id" value="">
+                        <input type="text" id="userEditModalName" name="name" class="form-control" placeholder="Name" autofocus required>
+                        <input type="email" id="userEditModalEmail" name="email" class="form-control" placeholder="Email" required>
                         <input type="password" name="password" class="form-control" placeholder="Password">
                         <input type="rePassword" name="rePassword" class="form-control" placeholder="Retype password">
                     </div>
@@ -166,5 +167,14 @@
             </div>
         </div>
     </div>
+
+    <script>
+        function insertDataForUserEditModal(id, name, email) {
+            document.getElementById("userEditModalName").value=name;
+            document.getElementById("userEditModalEmail").value=email;
+            document.getElementById("userEditModalId").value=id;
+        }
+
+    </script>
 
 @endsection
