@@ -134,7 +134,8 @@ class UserManagement extends model
                 'email' => $this->email,
                 'password' => $this->password,
                 'active' => $this->active,
-                'isAdmin' => $this->isAdmin
+                'isAdmin' => $this->isAdmin,
+                'updated_at' => date('Y-m-d H:i:s')
             ]);
     }
     
