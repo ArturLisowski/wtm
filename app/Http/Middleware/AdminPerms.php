@@ -10,15 +10,16 @@ class AdminPerms
     /**
      * Handle an incoming request.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
+     * @param  \Illuminate\Http\Request $request
+     * @param  \Closure $next
      * @return mixed
      */
     public function handle($request, Closure $next)
     {
-        if(!Auth::check() || Auth::user()->isAdmin != '1') {
-            return redirect()->route('home');
+        if (Auth::check() || Auth::user()->isAdmin == '1') {
+            return $next($request);
         }
-        return $next($request);
+        
+        return redirect()->route('home');
     }
 }
