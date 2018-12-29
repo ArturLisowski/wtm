@@ -17,14 +17,13 @@ class CreateLogsTable extends Migration
             $table->increments('id');
             $table->timestamps();
             $table->text('message');
+            $table->text('url');
             $table->tinyInteger('level')->index();
-            $table->integer('userId');
+            $table->unsignedInteger('userId');
             $table->foreign('userId')->references('id')->on('users');
         });
-    
-       
     }
-
+    
     /**
      * Reverse the migrations.
      *
