@@ -16,10 +16,10 @@ class AdminPerms
      */
     public function handle($request, Closure $next)
     {
-        if (Auth::check() || Auth::user()->isAdmin == '1') {
-            return $next($request);
+        if (!Auth::check() || Auth::user()->isAdmin != '1') {
+            return redirect()->route('home');
         }
         
-        return redirect()->route('home');
+        return $next($request);
     }
 }
