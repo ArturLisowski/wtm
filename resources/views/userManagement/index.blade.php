@@ -191,7 +191,12 @@
                             <tbody>
                             @foreach($logs as $log)
                                 <tr>
-                                    <td>{{$log->message}} <i class="fas fa-info"></i></td>
+                                    <td>
+                                        <a class="text-black" href="" title="edit" data-toggle="modal" data-target="#detailedLogsModal"
+                                           onclick="insertDataForDetailedLogsModal('dupa')">
+                                            {{$log->message}} <i class="fas fa-info"></i>
+                                        </a>
+                                    </td>
                                 </tr>
                             @endforeach
                             {{$logs->links()}}
@@ -203,4 +208,29 @@
             </div>
         </div>
     </div>
+
+    <div class="modal fade" id="detailedLogsModal" tabindex="-1" role="dialog" aria-labelledby="detailedLogsModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="detailedLogsModalLongTitle">Log details</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <span id="detailLogMessage">sss</span>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <input type="submit" class="btn btn-primary" value="Submit">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function insertDataForDetailedLogsModal(message) {
+            alert('asd');
+            document.getElementById("detailLogMessage").innerHTML = message;
+        }
+    </script>
 @endsection

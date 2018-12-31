@@ -25,6 +25,10 @@
 }
 
 .form-control {
-    margin:5px;
-    padding:5px;
+    margin: 5px;
+    padding: 5px;
+}
+
+.text-black {
+    color: black !important;
 }
