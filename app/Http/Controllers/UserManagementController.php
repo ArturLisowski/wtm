@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Log;
 use App\Logic\UserManagement\UserManagementLogic;
 use App\User;
 use App\UserManagement;
@@ -10,6 +11,8 @@ use Illuminate\Http\Request;
 
 class UserManagementController extends Controller
 {
+    const PAGINATE_VALUE = 15;
+    
     /**
      * UserManagementController constructor.
      */
@@ -24,11 +27,12 @@ class UserManagementController extends Controller
      * @param string $method
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function index(string $orderBy = 'id' ,string $method = 'ASC') //todo validateInput
+    public function index(string $orderBy = 'id', string $method = 'ASC') //todo validateInput
     {
-        $users = UserManagement::getAllUsers(15,$orderBy,$method);
-        $formMethod = ($method == 'ASC')? 'DESC' : 'ASC';
-        return view('userManagement/index', compact('users','formMethod','orderBy'));
+        $users = UserManagement::getAllUsers(UserManagementController::PAGINATE_VALUE, $orderBy, $method);
+        $formMethod = ($method == 'ASC') ? 'DESC' : 'ASC';
+        $logs = Log::getLogs('userManagement', UserManagementController::PAGINATE_VALUE);
+        return view('userManagement/index', compact('users', 'formMethod', 'orderBy', 'logs'));
     }
     
     /**
@@ -65,7 +69,7 @@ class UserManagementController extends Controller
             'rePassword' => 'same:password'
         ]);
         
-        UserManagementLogic::editUser($request->input('id'),$request->input('name'),$request->input('email'),$request->input('password'));
+        UserManagementLogic::editUser($request->input('id'), $request->input('name'), $request->input('email'), $request->input('password'));
         return redirect(route('userManagement'));
     }
 }

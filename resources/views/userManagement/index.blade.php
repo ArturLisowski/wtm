@@ -1,9 +1,9 @@
-@extends('layouts.app')
+@extends('layouts.userManagement.index')
 
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-10">
+            <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">Users</div>
                     <div class="card-body">
@@ -179,4 +179,28 @@
         }
     </script>
 
+@endsection
+@section('logs')
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">Last changes</div>
+                    <div class="card-body">
+                        <table class="table table-active table-hover table-striped table-bordered text-center">
+                            <tbody>
+                            @foreach($logs as $log)
+                                <tr>
+                                    <td>{{$log->message}} <i class="fas fa-info"></i></td>
+                                </tr>
+                            @endforeach
+                            {{$logs->links()}}
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection

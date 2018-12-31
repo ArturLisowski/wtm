@@ -52,4 +52,26 @@ class Log extends Model
         );
         
     }
+    
+    /**
+     * @param string $keyword
+     * @param int|null $paginate
+     * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator|\Illuminate\Support\Collection
+     */
+    public static function getLogs(string $keyword = '', int $paginate = null)
+    {
+        if (empty($paginate)) {
+            return DB::table('logs')
+                ->select('*')
+                ->where('url', 'like', '%' . $keyword . '%')
+                ->orderBy('created_at', 'DESC')
+                ->get();
+        }
+        
+        return DB::table('logs')
+            ->select('*')
+            ->where('url', 'like', '%' . $keyword . '%')
+            ->orderBy('created_at', 'DESC')
+            ->paginate($paginate);
+    }
 }

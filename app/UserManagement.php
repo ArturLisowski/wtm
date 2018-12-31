@@ -149,9 +149,9 @@ class UserManagement extends model
     {
         if (!empty($paginate)) {
             return DB::table('users')->select('*')->orderBy($orderBy, $method)->paginate($paginate);
-        } else {
-            return DB::table('users')->select('*')->orderBy($orderBy, $method)->get();
         }
+        
+        return DB::table('users')->select('*')->orderBy($orderBy, $method)->get();
     }
     
     /**
@@ -162,8 +162,8 @@ class UserManagement extends model
     {
         if (!empty($paginate)) {
             return DB::table('users')->select('*')->where('active', '=', 1)->paginate($paginate);
-        } else {
-            return DB::table('users')->select('*')->where('active', '=', 1)->get();
         }
+        
+        return DB::table('users')->select('*')->where('active', '=', 1)->get();
     }
 }
