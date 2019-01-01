@@ -25,6 +25,32 @@
 }
 
 .form-control {
-    margin:5px;
-    padding:5px;
+    margin: 5px;
+    padding: 5px;
+}
+
+.text-black {
+    color: black !important;
+}
+
+.modal-content
+{
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.footer
+{
+    background-color: #ffffff;
+    box-shadow: 0 -2px 4px rgba(0,0,0,.04);
+    padding: 15px 25px !important;
+    margin-top:10px;
+    color:gray;
+    font-size:20px;
+    text-align: right!important;
+}
+
+.footer a
+{
+    color:gray;
 }

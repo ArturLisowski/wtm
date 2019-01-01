@@ -65,7 +65,7 @@ class UserManagementLogic extends UserManagement
             $_user->setPassword($password);
             $message .= 'Password was changed';
         } else {
-            $message .= 'Password wasn\'t changed';
+            $message .= 'Password was not changed';
         }
         
         $_user->save();

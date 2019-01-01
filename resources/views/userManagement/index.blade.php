@@ -191,7 +191,12 @@
                             <tbody>
                             @foreach($logs as $log)
                                 <tr>
-                                    <td>{{$log->message}} <i class="fas fa-info"></i></td>
+                                    <td>
+                                        <a class="text-black" href="" title="edit" data-toggle="modal" data-target="#detailedLogsModal"
+                                           onclick="insertDataForDetailedLogsModal('{{$log->message}}','{{$log->url}}','{{$log->created_at}}','{{$log->level}}','{{$log->userId}}')">
+                                            {{$log->message}} <i class="fas fa-info"></i>
+                                        </a>
+                                    </td>
                                 </tr>
                             @endforeach
                             {{$logs->links()}}
@@ -203,4 +208,35 @@
             </div>
         </div>
     </div>
+
+    <div class="modal fade" id="detailedLogsModal" tabindex="-1" role="dialog" aria-labelledby="detailedLogsModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="detailedLogsModalLongTitle">Log details</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                        <h3>Message</h3><span id="detailLogMessage"></span>
+                        <h3>Url</h3><span id="detailLogUrl"></span>
+                        <h3>Date</h3><span id="detailLogDate"></span>
+                        <h3>Level</h3><span id="detailLogLevel"></span>
+                        <h3>User</h3><span id="detailLogUser"></span>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function insertDataForDetailedLogsModal(message, url, data, level, user) {
+            document.getElementById("detailLogMessage").innerHTML = message;
+            document.getElementById("detailLogUrl").innerHTML = url;
+            document.getElementById("detailLogDate").innerHTML = data;
+            document.getElementById("detailLogLevel").innerHTML = level;
+            document.getElementById("detailLogUser").innerHTML = user;
+        }
+    </script>
 @endsection
