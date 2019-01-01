@@ -85,7 +85,13 @@
             </div>
         </div>
     </div>
-
+    <div class="container-fluid footer">
+        <div class="row text-right">
+            <div class="col-xs-12">
+                <a href="https://github.com/ArturLisowski/wtm"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </div>
 </div>
 </body>
 </html>
