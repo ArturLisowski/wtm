@@ -13,7 +13,7 @@ class CreateWorkingTimeTable extends Migration
      */
     public function up()
     {
-        Schema::create('working_time', function (Blueprint $table) {
+        Schema::create('working_times', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
             $table->unsignedInteger('userId');
