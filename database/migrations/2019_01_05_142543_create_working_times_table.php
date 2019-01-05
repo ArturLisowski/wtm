@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateWorkingTimeTable extends Migration
+class CreateWorkingTimesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -25,7 +25,7 @@ class CreateWorkingTimeTable extends Migration
             $table->index('data');
         });
     }
-
+    
     /**
      * Reverse the migrations.
      *
