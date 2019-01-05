@@ -19,9 +19,9 @@ class CreateWorkingTimesTable extends Migration
             $table->unsignedInteger('userId');
             $table->date('data');
             $table->time('start');
-            $table->time('end');
-            $table->time('workingTime');
-            $table->foreign('userId')->references('id')->on('users');
+            $table->time('end')->nullable();
+            $table->time('workingTime')->nullable();
+            $table->foreign('userId')->references('id')->on('users')->onDelete('cascade');
             $table->index('data');
         });
     }
@@ -33,6 +33,8 @@ class CreateWorkingTimesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('working_time');
+        DB::statement('SET FOREIGN_KEY_CHECKS = 0');
+        Schema::dropIfExists('working_times');
+        DB::statement('SET FOREIGN_KEY_CHECKS = 1');
     }
 }
