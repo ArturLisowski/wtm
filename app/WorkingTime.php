@@ -89,11 +89,27 @@ class WorkingTime extends Model
     }
     
     /**
+     * @return mixed
+     */
+    public function getStartTime()
+    {
+        return $this->start;
+    }
+    
+    /**
      * @param $endTime
      */
     public function setEndTime($endTime)
     {
         $this->end = $endTime;
+    }
+    
+    /**
+     * @return mixed
+     */
+    public function getEndTime()
+    {
+        return $this->end;
     }
     
     /**
@@ -159,6 +175,10 @@ class WorkingTime extends Model
                 ->where('data', '=', $date)
                 ->get();
             $_workingTime = new WorkingTime();
+            
+            if (isset($data)) {
+                return $_workingTime;
+            }
             
             $_workingTime->setId($data[0]->id);
             $_workingTime->setUserId($data[0]->userId);
