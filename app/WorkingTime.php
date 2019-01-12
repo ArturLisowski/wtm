@@ -176,7 +176,7 @@ class WorkingTime extends Model
                 ->get();
             $_workingTime = new WorkingTime();
             
-            if (isset($data)) {
+            if (!isset($data[0])) {
                 return $_workingTime;
             }
             
