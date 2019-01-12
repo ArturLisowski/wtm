@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Logic\WorkingTime\WorkingTimeLogic;
+use App\WorkingTime;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class WorkingTimeController extends Controller
 {
@@ -14,9 +17,9 @@ class WorkingTimeController extends Controller
         $this->middleware('auth');
     }
     
-    public function index()
+    public function saveStartTime(Request $request)
     {
-    
+        WorkingTimeLogic::saveStartTime(Auth::user()->id, $request->input('startTime'));
+        return redirect(route('home'));
     }
-    
 }
