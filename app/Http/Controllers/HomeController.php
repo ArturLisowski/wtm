@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\WorkingTime;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -15,7 +17,7 @@ class HomeController extends Controller
     {
         $this->middleware('auth');
     }
-
+    
     /**
      * Show the application dashboard.
      *
@@ -23,6 +25,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $_workingTime = WorkingTime::getUserTimeFromDay(Auth::user()->id, date('y-m-d'));
+        
+        return view('home')->with('_workingTime', ['startTime' => $_workingTime->getStartTime(), 'endTime' => $_workingTime->getEndTime(), $_workingTime->getWorkingTime()]);
     }
 }
