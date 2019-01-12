@@ -78,7 +78,7 @@
             </div>
         </div>
     </nav>
-    <div class="py-12">
+    <div class="py-4">
         @yield('timeManagement')
     </div>
     <div class="container-fluid footer">
