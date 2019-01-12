@@ -29,6 +29,11 @@ class WorkingTimeLogic
         $_workingTime->save();
     }
     
+    /**
+     * @param $userId
+     * @param $endTime
+     * @throws \Exception
+     */
     public static function saveEndTime($userId, $endTime)
     {
         $_workingTime = WorkingTime::getUserTimeFromDay($userId, date('y-m-d'));
@@ -36,8 +41,7 @@ class WorkingTimeLogic
         
         $startTime = new DateTime($_workingTime->getStartTime());
         $endTime = new DateTime($_workingTime->getEndTime());
-       
-       
+        
         $_workingTime -> setWorkingTime(($startTime->diff($endTime)->format('%H:%i:00')));
         $_workingTime ->save();
     }
