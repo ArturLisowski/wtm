@@ -24,5 +24,5 @@ Route::get('/userManagement/setActive/{id}', 'UserManagementController@setActive
 Route::get('/userManagement/{orderBy?}/{method?}', 'UserManagementController@index')->name('userManagement');
 Route::post('userManagement/edit', 'UserManagementController@edit')->name('editUser');
 
-Route::get('workingTime','WorkingTimeController@index');
+Route::POST('saveStartTime','WorkingTimeController@saveStartTime')->name('saveStartTime');
 
