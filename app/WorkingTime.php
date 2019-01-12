@@ -192,4 +192,42 @@ class WorkingTime extends Model
         
         return new WorkingTime();
     }
+    
+    /**
+     * @param int $userId
+     * @param int $days
+     * @return array|null
+     */
+    public static function getLastWorkingDays(int $userId, int $days = 1)
+    {
+        if ($userId > 0) {
+            $data = DB::table('working_times')
+                ->select('*')
+                ->where('userId', '=', $userId)
+                ->limit($days)
+                ->get();
+            
+            
+            if (!isset($data[0])) {
+                return null;
+            }
+            
+            $output = [];
+            
+            foreach ($data as $d) {
+                $_workingTime = new WorkingTime();
+                $_workingTime->setId($data[0]->id);
+                $_workingTime->setUserId($data[0]->userId);
+                $_workingTime->setData($data[0]->data);
+                $_workingTime->setStartTime($data[0]->start);
+                $_workingTime->setEndTime($data[0]->end);
+                $_workingTime->setWorkingTime($data[0]->workingTime);
+                $output[] = $d;
+            }
+            
+            return $output;
+        }
+        
+        return null;
+    }
 }
