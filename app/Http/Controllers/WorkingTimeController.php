@@ -22,4 +22,10 @@ class WorkingTimeController extends Controller
         WorkingTimeLogic::saveStartTime(Auth::user()->id, $request->input('startTime'));
         return redirect(route('home'));
     }
+    
+    public function saveEndTime(Request $request)
+    {
+        WorkingTimeLogic::saveEndTime(Auth::user()->id, $request->input('endTime'));
+        return redirect(route('home'));
+    }
 }

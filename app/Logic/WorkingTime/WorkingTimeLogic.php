@@ -12,6 +12,7 @@ namespace App\Logic\WorkingTime;
 
 
 use App\WorkingTime;
+use DateTime;
 
 class WorkingTimeLogic
 {
@@ -28,5 +29,17 @@ class WorkingTimeLogic
         $_workingTime->save();
     }
     
+    public static function saveEndTime($userId, $endTime)
+    {
+        $_workingTime = WorkingTime::getUserTimeFromDay($userId, date('y-m-d'));
+        empty($startTime)? $_workingTime->setEndTime(date('H:i:00')):$_workingTime->setEndTime($endTime);
+        
+        $startTime = new DateTime($_workingTime->getStartTime());
+        $endTime = new DateTime($_workingTime->getEndTime());
+       
+       
+        $_workingTime -> setWorkingTime(($startTime->diff($endTime)->format('%H:%i:00')));
+        $_workingTime ->save();
+    }
     
 }
