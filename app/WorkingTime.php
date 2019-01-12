@@ -21,6 +21,7 @@ class WorkingTime extends Model
                 ->select('*')
                 ->where('id', '=', $id)
                 ->get();
+            
             $this->id = $data[0]->id;
             $this->userId = $data[0]->userId;
             $this->data = $data[0]->data;
@@ -142,5 +143,33 @@ class WorkingTime extends Model
                     ]
                 );
         }
+    }
+    
+    /**
+     * @param int $userId
+     * @param null $date
+     * @return WorkingTime
+     */
+    public static function getUserTimeFromDay(int $userId = 0, $date = null)
+    {
+        if ($userId > 0 && $date != null) {
+            $data = DB::table('working_times')
+                ->select('*')
+                ->where('userId', '=', $userId)
+                ->where('data', '=', $date)
+                ->get();
+            $_workingTime = new WorkingTime();
+            
+            $_workingTime->setId($data[0]->id);
+            $_workingTime->setUserId($data[0]->userId);
+            $_workingTime->setData($data[0]->data);
+            $_workingTime->setStartTime($data[0]->start);
+            $_workingTime->setEndTime($data[0]->end);
+            $_workingTime->setWorkingTime($data[0]->workingTime);
+            
+            return $_workingTime;
+        }
+        
+        return new WorkingTime();
     }
 }
